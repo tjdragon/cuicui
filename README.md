@@ -34,4 +34,5 @@ The choice is yours about the choice of the LLM, local [Ollama](https://ollama.c
     This is the model I used. You can choose any other model [there](https://ollama.com/search)
 3. Install [Flowise](https://docs.flowiseai.com/getting-started) using the "For Developers" section - I am using version [2.1.3](https://github.com/FlowiseAI/Flowise/releases/tag/flowise%402.1.3)
 4. Get an [X](https://developer.x.com/en) API key
-5. Get yourself an account at [DFNS](https://www.dfns.co/product/wallets-as-a-service) or any other provider of your choice.
+5. Get yourself an account at [DFNS](https://www.dfns.co/product/wallets-as-a-service) or any other provider of your choice. Create a ETH wallet.
+6. Get the code from [https://github.com/tjdragon/cuicui](https://github.com/tjdragon/cuicui)
