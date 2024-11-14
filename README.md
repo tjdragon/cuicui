@@ -174,3 +174,45 @@ Here is a sample output for the tweet:
 ```text
 Exciting news in the crypto world! Cryptocurrency values soar above $60,000, hitting a high not seen since 2021. Will a new record be set? Stay updated on market trends and developments with crypto.news. #Cryptocurrency #CryptoNews #MarketTrends
 ```
+
+## X
+
+We just need to use [X tools](https://developer.twitter.com/apitools/) to publish the tweet and continuously monitor the likes and re-tweets. It [https://developer.twitter.com/en/portal/products](ain't cheap).
+
+### Crypto Payment
+In order to retrieve the ETH address - I put my in my bio, you can use this [api](https://developer.twitter.com/apitools/api?endpoint=%2F2%2Fusers%2F%7Bid%7D&method=get)
+
+It will return something like:
+
+```json
+{
+    "data": {
+        "most_recent_tweet_id": "1856356085705097275",
+        "created_at": "2014-12-19T08:50:41.000Z",
+        "location": "Earth",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1854811740757774336/60a6cJAT_normal.jpg",
+        "verified_type": "none",
+        "id": "2935813932",
+        "username": "CryptoBaccus",
+        "verified": false,
+        "description": "ETH Address: 0xf53AD2c6851052A81B42133467480961B2321C09",
+        "receives_your_dm": false,
+        "public_metrics": {
+            "followers_count": 16,
+            "following_count": 11,
+            "tweet_count": 3,
+            "listed_count": 0,
+            "like_count": 1
+        },
+        "name": "Crypto Baccus",
+        "subscription_type": "None",
+        "protected": false
+    }
+}
+```
+
+The reward payment algorithm:
+
+- Pay only an ETH address once
+- Pay less if a "like" but more if a "re-tweet"
+- Up to max amount / day

@@ -1,0 +1,24 @@
+{
+    "data": {
+        "most_recent_tweet_id": "1856356085705097275",
+        "created_at": "2014-12-19T08:50:41.000Z",
+        "location": "Earth",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1854811740757774336/60a6cJAT_normal.jpg",
+        "verified_type": "none",
+        "id": "2935813932",
+        "username": "CryptoBaccus",
+        "verified": false,
+        "description": "ETH Address: 0xf53AD2c6851052A81B42133467480961B2321C09",
+        "receives_your_dm": false,
+        "public_metrics": {
+            "followers_count": 16,
+            "following_count": 11,
+            "tweet_count": 3,
+            "listed_count": 0,
+            "like_count": 1
+        },
+        "name": "Crypto Baccus",
+        "subscription_type": "None",
+        "protected": false
+    }
+}
