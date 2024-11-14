@@ -20,4 +20,3 @@ async function fetchRssItems(url) {
 fetchRssItems('https://cointelegraph.com/rss/tag/blockchain').then(items => {
     console.log(items);
 });
-

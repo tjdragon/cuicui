@@ -98,11 +98,11 @@ Design the following flow:
 
 ![Flowise 1](images/flow-1.png)
 
-- It all starts with a **Supervisor** that takes in a LLM model (**ChatOllama** in my case running locally), you can substitue ChatOllama with OpenAI, Gemeni, BedRock, Anthropic etc
+- It all starts with a **Supervisor** that takes in a LLM model (**ChatOllama** in my case running locally or ChatOpenAI), you can substitue ChatOllama with OpenAI, Gemeni, BedRock, Anthropic etc
 - The **Supervisor** links to a **Worker**, in my case, an AI agent called "NEWS FETCHER". This AI Agent has a prompt "You are a research assistant who gets the latest crypto news, digest the stories and headlines using https://cointelegraph.com/rss/tag/blockchain"
-- The **Worker** ("NEWS FETCHER") uses a **Retriever Tool** that uses an **In-Memory Vector Store** using **Ollama Embeddings** being fed by my **Custom Document Loader** using the JavaScript code above
+- The **Worker** ("NEWS FETCHER") uses a **Retriever Tool** that uses an **In-Memory Vector Store** using **Ollama Embeddings** being fed by my **Custom Document Loader** using the JavaScript code above or in the example above a [Serper](https://serpapi.com/) API using Google Search.
 
-In order to test this first part, first upinsert the website data into Flowise Store by clicking on the green icon, upper-right corner, called "Upsert Vector Database" 
+In order to test this first part, first upinsert the website data into Flowise Store by clicking on the green icon, upper-right corner, called "Upsert Vector Database" (If based on the Document Retriever)
 
 ### AI Agent to Create Content for X
 
@@ -119,7 +119,7 @@ Prompt Input:
 I have 1 Supervisor and 2 Workers.
 The Supervisor manages the 2 Workers.
 
-The first Worker's job is to fetch the latest news using the NEW RETRIEVER TOOL.
+The first Worker's job is to fetch the latest news using the NEWS RETRIEVER TOOL using Serper search API
 
 The second Workder's job is to create a content for a tweet with relevant hashtags and post the data using the Requests Post tool.
 
@@ -135,7 +135,11 @@ Name:
 News Supervisor
 
 Revised System Prompt:
-As the News Supervisor, your primary responsibility is to coordinate the team's efforts to ensure the timely and effective dissemination of the latest news. You are tasked with overseeing the workflow, ensuring each task is completed sequentially and to the highest standard. Your role involves managing the process from news retrieval to content creation and posting, ensuring a seamless operation. Begin by instructing Worker 1 to fetch the latest news, then direct the information to Worker 2 for content creation and posting. Conclude the process by confirming completion with the statement "DONE."
+You must start with the "NEWS RETRIEVER" agent, then with the "CONTENT CREATOR" agent.
+
+Log each step.
+
+Conclude the process by confirming completion with the statement "DONE."
 
 WORKER 1
 
@@ -143,7 +147,11 @@ Name:
 News Retriever
 
 Revised System Prompt:
-As the News Retriever, your task is to utilize the NEW RETRIEVER TOOL to gather the most recent and relevant news articles. Focus on accuracy and timeliness to ensure the information collected is up-to-date and pertinent to our audience. You are responsible for filtering out irrelevant content and highlighting key points that will form the basis for further content creation. After retrieving the news, compile a concise summary and pass this information to Worker 2 for the next stage. Work autonomously with the tools available to you, ensuring the information is clear and precise.
+As the News Retriever, your task is to utilize the SERPER TOOLto gather the most recent and relevant news articles from internet. Use also https://crypto.news/news/ and https://cointelegraph.com/category/latest-news
+
+Focus on accuracy and timeliness to ensure the information collected is up-to-date and pertinent to our audience. You are responsible for filtering out irrelevant content and highlighting key points that will form the basis for further content creation. 
+
+After retrieving the news, compile a concise summary and pass this information.
 
 WORKER 2
 
@@ -151,7 +159,18 @@ Name:
 Content Creator
 
 Revised System Prompt:
-As the Content Creator, your role is to transform the news summary provided by Worker 1 into engaging tweet content. Craft a concise and compelling tweet that captures the essence of the news, incorporating relevant hashtags to maximize reach and engagement. Ensure your communication is clear, engaging, and aligned with the brand's voice. Once the tweet content is finalized, use the Requests Post tool to publish the tweet. Ensure the content is error-free and impactful. Confirm task completion to the Supervisor once the tweet is posted.
+As the Content Creator, your role is to transform the news summary provided by Worker 1 into engaging tweet content. 
+
+Craft a concise and compelling tweet that captures the essence of the news, incorporating relevant hashtags to maximize reach and engagement. Ensure your communication is clear, engaging, and aligned with the brand's voice. 
+
+Ensure the content is error-free and impactful. 
+
+Once the tweet content is finalized, log and write the tweet in a file
 ```
 
-With those I update the flows for the local test using the design below:
+### Tweet Output
+Here is a sample output for the tweet:
+
+```text
+Exciting news in the crypto world! Cryptocurrency values soar above $60,000, hitting a high not seen since 2021. Will a new record be set? Stay updated on market trends and developments with crypto.news. #Cryptocurrency #CryptoNews #MarketTrends
+```
